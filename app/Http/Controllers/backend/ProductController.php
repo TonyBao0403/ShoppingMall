@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\ProductModel;
 
@@ -14,20 +15,30 @@ class ProductController extends Controller
      */
     public function indexapi()
     {
-        return ProductModel::all();
+        //return ProductModel::all();
+        return ProductModel::simplePaginate(10);
     }
     public function index()
     {   
-        return view('products');
+        return view('backend.products');
     }
     public function index_insert()
     {   
-        return view('product_insert');
+        return view('backend.product_insert');
     }
     public function index_update($id)
     {   
         $product = ProductModel::find($id);
-        return view('product_update',compact('product'));
+        if($product->approve == 'Y'){
+            $product->approve = 1;
+            //dd($product->approve);
+        }
+        else{
+            $product->approve = 0;
+            //dd($product->approve);
+        }
+        
+        return view('backend.product_update',compact('product'));
     }
     /**
      * Show the form for creating a new resource.
@@ -108,6 +119,12 @@ class ProductController extends Controller
         $product->amount = $request->input('amount');
         $product->price = $request->input('price');
         $product->delivery_staff = $request->input('delivery_staff');
+        if($request->input('approve') == 1){
+            $product->approve = 'Y';
+        }
+        else{
+            $product->approve = 'N';
+        }
         $product->save();
 
         return  redirect()->route('product');
@@ -122,6 +139,6 @@ class ProductController extends Controller
     public function destroy($id)
     {
         ProductModel::destroy($id);
-        return view('products');
+        return view('backend.products');
     }
 }

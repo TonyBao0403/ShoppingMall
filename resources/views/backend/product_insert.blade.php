@@ -60,11 +60,13 @@
                 </div>
             </div>
 
-            <div class="form-group row justify-content-end">
-                <div class="col-sm-5">
-                    <button type="submit" class="btn btn-primary">新增</button>
+            <div class="form-group row justify-content-end" style="display:block;">
+                <div class="col-sm-8">
+                    <a href="/" class="btn btn-primary" id="btn-cancel" style="background-color:#F08080">取消</a>
+                    <button type="submit" class="btn btn-primary" style="float:right;background-color:#4CAF50">新增</button>
                 </div>
             </div>
+            
             
         </form>
     

@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/products','ProductController@indexapi');
+Route::get('/products','backend\ProductController@indexapi');

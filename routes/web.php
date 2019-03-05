@@ -12,18 +12,23 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('backend.products');
+})->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/', 'ProductController@index')->name('home')->middleware('auth');
 
 
+Route::group(['prefix' => '/admin/products'],function(){
+    Route::get('/','backend\ProductController@index')->name('product')->middleware('auth');
+    Route::get('/insert','backend\ProductController@index_insert')->name('index.insert');
+    Route::post('/insert','backend\ProductController@store')->name('product.insert');
+    Route::get('/update/id/{id}','backend\ProductController@index_update')->name('index.update');
+    Route::post('/update/{id}','backend\ProductController@update')->name('product.update');
+    Route::get('/delete/id/{id}','backend\ProductController@destroy')->name('product.destroy');
+});
 
-Route::get('/products','ProductController@index')->name('product');
-Route::get('/products/insert','ProductController@index_insert')->name('index.insert');
-Route::post('/products/insert','ProductController@store')->name('product.insert');
-Route::get('/products/update/id/{id}','ProductController@index_update')->name('index.update');
-Route::post('/products/update/{id}','ProductController@update')->name('product.update');
-Route::get('/products/delete/id/{id}','ProductController@destroy')->name('product.destroy');
+Route::group(['prefix' => '/productsList'],function(){
+   Route::get('/','frontend\ProductListController@index');
+});

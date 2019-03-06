@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function indexapi()
     {
         //return ProductModel::all();
-        return ProductModel::simplePaginate(10);
+        return ProductModel::simplePaginate(8);
     }
     public function index()
     {   

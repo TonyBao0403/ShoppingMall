@@ -76,9 +76,9 @@ if(query.page != undefined){
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="">
                 <h1>All Order</h1>
-                <table class="table table-bordered">
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th style="width:50px">#</th>
@@ -88,7 +88,7 @@ if(query.page != undefined){
                             <th style="width:100px">數量</th>
                             <th style="width:100px">價格</th>
                             <th style="width:100px">外送員</th>
-                            <th style="width:50px">收款</th>
+                            <th style="width:48px">收款</th>
                             <th style="width:100px">修改訂單</th>
                             <th style="width:100px">刪除訂單</th>
                         </tr>

@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('amount')->nullable();
             $table->integer('price')->unsigned();
             $table->string('delivery_staff'); //新增外送員
+            $table->string('approve');
             $table->timestamps();
         });
     }

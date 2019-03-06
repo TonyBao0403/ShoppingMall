@@ -61,7 +61,7 @@ $(function() {
 <div class="container">
     <div class="col-md-8 col-md-offset-2">
         <h1>All Products</h1>
-        <table class="table table-bordered">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th style="width:70px">#</th>
